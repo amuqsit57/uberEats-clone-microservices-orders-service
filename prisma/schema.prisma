@@ -1,0 +1,34 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Order {
+  id                Int       @id @default(autoincrement())
+  userId            Int       // Foreign key to User from Auth Service
+  restaurantId      Int       // Restaurant ID (from restaurant service in future)
+  
+  items             Json      // Array of items: [{id, name, quantity, price}]
+  deliveryAddress   String
+  totalPrice        Float
+  
+  // User cache (to avoid always calling auth service)
+  userEmail         String?   // Cached from auth service
+  userName          String?   // Cached from auth service
+  
+  // Order status workflow
+  status            String    @default("PENDING") // PENDING -> CONFIRMED -> PREPARING -> READY -> DELIVERED
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+}

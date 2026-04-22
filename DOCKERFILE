@@ -1,0 +1,14 @@
+from 'node:alpine-20'
+
+Workdir /app
+
+copy package.json ./
+
+RUN npm install
+
+copy . .
+
+EXPOSE 5001
+
+
+CMD ["npm", "start"]

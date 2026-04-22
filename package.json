@@ -1,0 +1,32 @@
+{
+  "name": "ubereats-clone-orders-service",
+  "version": "1.0.0",
+  "description": "Orders microservice for UberEats Clone",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/server.js",
+    "start": "node ./src/server.js",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:generate": "prisma generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.7.0",
+    "@prisma/client": "^7.7.0",
+    "axios": "^1.7.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.20.0",
+    "prisma": "^7.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "nodemon": "^3.1.14"
+  }
+}

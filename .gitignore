@@ -1,0 +1,9 @@
+# Orders Service - ignore .env file
+.env
+node_modules/
+.DS_Store
+dist/
+build/
+*.log
+.vscode/
+.idea/
