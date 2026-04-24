@@ -10,10 +10,12 @@ const AUTH_SERVICE_URL = process.env.AUTH_SERVICE_URL || "http://localhost:5000"
  */
 const fetchUserDetails = async (userId) => {
   try {
-    const response = await axios.get(`${AUTH_SERVICE_URL}/api/users/${userId}`, {
+    const response = await axios.get(`${AUTH_SERVICE_URL}/api/auth/users/${userId}`, {
       timeout: 5000,
     });
-    return response.data;
+
+    const payload = response.data;
+    return payload?.user ?? payload;
   } catch (error) {
     console.warn(`Could not fetch user ${userId} from auth service:`, error.message);
     // Return minimal user info from order's cached data
